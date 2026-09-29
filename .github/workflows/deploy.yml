@@ -31,9 +31,11 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
+        working-directory: ./game
         run: npm install
 
       - name: Build project
+        working-directory: ./game
         run: npm run build
 
       - name: Setup Pages
@@ -42,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './game/dist' # <--- CAMINHO EXATO ONDE FICA O INDEX.HTML
 
       - name: Deploy to GitHub Pages
         id: deployment
